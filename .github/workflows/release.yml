@@ -1,0 +1,114 @@
+name: release
+
+# Publishes the version of Directory.Build.props (VersionPrefix) as a GitHub
+# release, with the Windows exe and the Linux server, when there is no
+# release for it yet:
+#  - on every push to main (so raising the version publishes it),
+#  - on a tag vX.Y.Z (it must match VersionPrefix),
+#  - by hand from Actions (Run workflow).
+# The release creates its tag vX.Y.Z. See docs/RELEASES.md.
+on:
+  push:
+    branches: [main]
+    tags: ['v*.*.*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_NOLOGO: 1
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.check.outputs.version }}
+      publish: ${{ steps.check.outputs.publish }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: check
+        name: Version to publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="$(sed -n 's:.*<VersionPrefix>\(.*\)</VersionPrefix>.*:\1:p' Directory.Build.props)"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [ "$GITHUB_REF_TYPE" = "tag" ] && [ "${GITHUB_REF_NAME#v}" != "$version" ]; then
+            echo "::error::La etiqueta $GITHUB_REF_NAME no coincide con VersionPrefix $version de Directory.Build.props"
+            exit 1
+          fi
+          if gh release view "v$version" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "La versión $version ya está publicada: nada que hacer."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Se publicará la versión $version."
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  windows:
+    needs: version
+    if: needs.version.outputs.publish == 'true'
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet build PacketBot.sln -c Release
+      - run: dotnet test PacketBot.sln -c Release --no-build
+      - name: Publish exe
+        shell: pwsh
+        run: ./deploy/publish-windows.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: artifacts/*.zip
+
+  linux:
+    needs: version
+    if: needs.version.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet test tests/PacketBot.Core.Tests -c Release
+      - run: dotnet test tests/PacketBot.Server.Tests -c Release
+      - run: bash deploy/publish.sh linux-x64
+      - run: bash deploy/publish.sh linux-arm64
+      - name: Name the archives with the version
+        run: |
+          for rid in linux-x64 linux-arm64; do
+            mv "artifacts/packetbot-$rid.tar.gz" "artifacts/PacketBot-Server-${{ needs.version.outputs.version }}-$rid.tar.gz"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux
+          path: artifacts/*.tar.gz
+
+  release:
+    needs: [version, windows, linux]
+    if: needs.version.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="${{ needs.version.outputs.version }}"
+          flags=""
+          case "$version" in *-*) flags="--prerelease";; esac
+          # Creates the tag v<version> on this commit if it does not exist.
+          gh release create "v$version" dist/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title "PacketBot $version" --generate-notes $flags

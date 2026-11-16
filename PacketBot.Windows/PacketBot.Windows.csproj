@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Windows front end of PacketBot. Namespaces stay FunnyProject.* (also
+         the embedded .resx resource names), only the project and exe change. -->
+    <AssemblyName>PacketBot.Windows</AssemblyName>
+    <RootNamespace>FunnyProject</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- Shared engine: protocol, game state, navigation, modules and services.
+       Navigation/maps.json is copied to this project's output by Core. -->
+  <ItemGroup>
+    <ProjectReference Include="..\PacketBot.Core\PacketBot.Core.csproj" />
+  </ItemGroup>
+
+</Project>

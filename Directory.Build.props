@@ -1,0 +1,10 @@
+<Project>
+  <!-- Versión de PacketBot para todos los proyectos (SemVer: MAYOR.MENOR.PARCHE).
+       Para publicar una versión: cambiar este número, hacer commit y subir la
+       etiqueta vX.Y.Z (ver docs/RELEASES.md). Las compilaciones de CI de main
+       añaden un sufijo (-ci.N) con VersionSuffix. -->
+  <PropertyGroup>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <Product>WordGalaxy PacketBot</Product>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>PacketBot</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <span class="brand">PacketBot</span>
+    <nav id="tabs" class="tabs" aria-label="Instancias"></nav>
+    <button id="logout" class="ghost" hidden>Salir</button>
+  </header>
+
+  <main>
+    <section id="login" class="card narrow" hidden>
+      <h1>Iniciar sesión</h1>
+      <form id="login-form">
+        <label>Contraseña del panel
+          <input id="password" type="password" autocomplete="current-password" required>
+        </label>
+        <button type="submit">Entrar</button>
+        <p id="login-error" class="error" role="alert"></p>
+      </form>
+    </section>
+
+    <section id="empty" class="card narrow" hidden>
+      <p>No hay instancias abiertas. Comprueba el PHPSESSID y los logs del servidor.</p>
+    </section>
+
+    <section id="panel" hidden>
+      <div class="grid">
+        <article class="card">
+          <div class="row between">
+            <h2 id="name"></h2>
+            <span id="state" class="pill"></span>
+          </div>
+          <dl class="facts">
+            <dt>TCP</dt><dd id="tcp"></dd>
+            <dt>Mapa</dt><dd id="map"></dd>
+          </dl>
+          <pre id="status" class="status"></pre>
+          <div class="row wrap">
+            <button id="start">Iniciar bot</button>
+            <button id="stop" class="danger">Parar bot</button>
+            <button id="tcp-restart" class="ghost">Reiniciar TCP</button>
+            <button id="restart" class="ghost">Reiniciar instancia</button>
+          </div>
+        </article>
+
+        <article class="card map-card">
+          <div class="row between">
+            <h2>Mapa <span id="map-name" class="muted"></span></h2>
+            <span class="legend">
+              <i class="dot hero"></i>Nave <i class="dot npc"></i>NPC <i class="dot box"></i>Caja
+              <i class="dot ally"></i>Aliado <i class="dot portal"></i>Portal
+            </span>
+          </div>
+          <canvas id="minimap" aria-label="Minimapa con la posición de la nave"></canvas>
+        </article>
+
+        <article class="card">
+          <h2>Módulo</h2>
+          <div class="segmented" id="module" role="radiogroup">
+            <button data-value="collect" role="radio">Collect</button>
+            <button data-value="npc" role="radio">NPC Killer</button>
+            <button data-value="gg" role="radio">Galaxy Gates</button>
+          </div>
+          <p class="hint">Se aplica en el próximo inicio del bot.</p>
+        </article>
+
+        <article class="card" data-section="collect">
+          <h2>Collect</h2>
+          <label>Mapa <select data-key="mapa_collect" id="collect-map"></select></label>
+          <fieldset><legend>Cajas</legend><div id="boxes" class="checks"></div></fieldset>
+          <p class="hint">Aparecen más tipos cuando la nave los ve en el mapa.</p>
+        </article>
+
+        <article class="card" data-section="npc">
+          <h2>NPC Killer</h2>
+          <label>Mapa <select data-key="mapa_npc" id="npc-map"></select></label>
+          <label>Munición <select data-key="municion_npc" id="npc-ammo"></select></label>
+          <label class="check"><input type="checkbox" id="leech"> Comprar Energy Leech (30 min, 5 min de enfriamiento)</label>
+          <fieldset><legend>Objetivos</legend><div id="npcs" class="checks"></div></fieldset>
+          <p class="hint">Los NPCs aparecen cuando la nave está en el mapa.</p>
+          <label class="check"><input type="checkbox" id="zone-draw"> Dibujar zonas preferidas en el minimapa</label>
+          <button id="zone-clear" class="ghost" type="button">Borrar zonas de este mapa</button>
+          <p class="hint">Zonas preferidas (verdes): sin objetivos a la vista busca dentro de ellas y prefiere los NPCs que están dentro. Con la casilla marcada, arrastra en el minimapa para crear una y toca una zona para borrarla. Se guardan para el mapa en el que está la nave.</p>
+        </article>
+
+        <article class="card" data-section="gg">
+          <h2>Galaxy Gates</h2>
+          <label>Puerta <select data-key="gg" id="gate"></select></label>
+          <label>Spins <select data-key="spins" id="spins"></select></label>
+          <label>Munición <select data-key="municion_gg" id="gg-ammo"></select></label>
+          <label>Ataque
+            <select data-key="ataque" id="attack">
+              <option value="both">Láser + Kamikaze</option>
+              <option value="laser">Láser</option>
+              <option value="kami">Kamikaze</option>
+            </select>
+          </label>
+          <label>Formación final <select data-key="formacion_final" id="final-formation" data-formation></select></label>
+        </article>
+
+        <article class="card">
+          <h2>Formaciones</h2>
+          <label>Al moverse <select data-key="formacion_mover" id="run-formation" data-formation></select></label>
+          <label>Al atacar <select data-key="formacion_atacar" id="attack-formation" data-formation></select></label>
+          <p class="hint" id="formations-hint"></p>
+        </article>
+
+        <article class="card">
+          <h2>Nave</h2>
+          <div id="items" class="items"><p class="hint">Todavía no ha llegado la barra de objetos (llega al iniciar sesión).</p></div>
+        </article>
+
+        <article class="card">
+          <h2>Boosters y grupo</h2>
+          <fieldset><legend>Autocompra (1 unidad con menos de 6 h)</legend><div id="autobuy" class="checks"></div></fieldset>
+          <label class="check"><input type="checkbox" id="invites"> Aceptar invitaciones de grupo</label>
+          <p class="hint mono" id="path"></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

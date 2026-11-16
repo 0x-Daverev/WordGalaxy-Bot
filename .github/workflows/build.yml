@@ -1,0 +1,57 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_NOLOGO: 1
+
+jobs:
+  windows:
+    # Native build of the WinForms app plus the shared Core and its tests.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet build PacketBot.sln -c Release
+      - run: dotnet test PacketBot.sln -c Release --no-build
+      # PacketBot.Windows.exe, self-contained (no .NET needed on the PC).
+      # Version from Directory.Build.props plus -ci.<run number>.
+      - name: Publish exe
+        shell: pwsh
+        run: ./deploy/publish-windows.ps1 -VersionSuffix "ci.${{ github.run_number }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: packetbot-windows
+          path: artifacts/*.zip
+          retention-days: 14
+
+  linux:
+    # Core and the headless server must build and pass their tests without any Windows SDK.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet build PacketBot.Server -c Release
+      - run: dotnet test tests/PacketBot.Core.Tests -c Release
+      - run: dotnet test tests/PacketBot.Server.Tests -c Release
+      # The Docker image must keep building.
+      - run: docker build -t packetbot:ci .
+      # Ready-to-copy server for a VPS (self-contained, no .NET needed there).
+      - run: bash deploy/publish.sh linux-x64
+      - run: bash deploy/publish.sh linux-arm64
+      - uses: actions/upload-artifact@v4
+        with:
+          name: packetbot-linux
+          path: artifacts/*.tar.gz
+          retention-days: 14

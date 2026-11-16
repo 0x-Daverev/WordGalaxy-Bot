@@ -1,0 +1,23 @@
+# PacketBot.Server with Docker Compose: docker compose up -d --build
+# Secrets go in .env next to this file (chmod 600, never commit it):
+#   PACKETBOT_PHPSESSID=...
+#   PACKETBOT_TELEGRAM_TOKEN=...        (optional)
+#   PACKETBOT_TELEGRAM_CHAT_ID=...      (optional)
+#   PACKETBOT_WEB_PASSWORD=...          (optional, enables the web panel)
+services:
+  packetbot:
+    build: .
+    image: packetbot
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      TZ: Europe/Madrid
+      # PACKETBOT_START: collect        # collect | npc | gg
+    volumes:
+      - packetbot-data:/data
+    # Web panel: only on this machine; publish it through an HTTPS reverse proxy.
+    ports:
+      - "127.0.0.1:8080:8080"
+
+volumes:
+  packetbot-data:

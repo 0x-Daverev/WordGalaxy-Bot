@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+artifacts/
+.git/
+.github/
+PacketBot.Windows/
+tests/
+docs/
+deploy/
+*.md

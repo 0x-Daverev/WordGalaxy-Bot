@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacketBot.Windows", "PacketBot.Windows\PacketBot.Windows.csproj", "{882EB4B0-C43A-45AF-BB7E-58596DE56FE6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F71E13E3-31DD-4439-BF3E-998550498E48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacketBot.Core.Tests", "tests\PacketBot.Core.Tests\PacketBot.Core.Tests.csproj", "{31423BE6-E613-45C4-A481-61B3ECCE971E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacketBot.Core", "PacketBot.Core\PacketBot.Core.csproj", "{E5D680BD-9546-48D5-A513-F2F766C5B996}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacketBot.Server", "PacketBot.Server\PacketBot.Server.csproj", "{E3916721-DCF4-478A-8D47-CF99338FE08B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacketBot.Server.Tests", "tests\PacketBot.Server.Tests\PacketBot.Server.Tests.csproj", "{7F415B35-858D-4F22-8EF1-C7A3CEBBAB3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{882EB4B0-C43A-45AF-BB7E-58596DE56FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{882EB4B0-C43A-45AF-BB7E-58596DE56FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{882EB4B0-C43A-45AF-BB7E-58596DE56FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{882EB4B0-C43A-45AF-BB7E-58596DE56FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31423BE6-E613-45C4-A481-61B3ECCE971E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31423BE6-E613-45C4-A481-61B3ECCE971E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31423BE6-E613-45C4-A481-61B3ECCE971E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31423BE6-E613-45C4-A481-61B3ECCE971E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5D680BD-9546-48D5-A513-F2F766C5B996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5D680BD-9546-48D5-A513-F2F766C5B996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5D680BD-9546-48D5-A513-F2F766C5B996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5D680BD-9546-48D5-A513-F2F766C5B996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3916721-DCF4-478A-8D47-CF99338FE08B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3916721-DCF4-478A-8D47-CF99338FE08B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3916721-DCF4-478A-8D47-CF99338FE08B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3916721-DCF4-478A-8D47-CF99338FE08B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F415B35-858D-4F22-8EF1-C7A3CEBBAB3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F415B35-858D-4F22-8EF1-C7A3CEBBAB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F415B35-858D-4F22-8EF1-C7A3CEBBAB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F415B35-858D-4F22-8EF1-C7A3CEBBAB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC43B4E5-4AC1-45DD-BEAF-1D5644A1E10C}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{31423BE6-E613-45C4-A481-61B3ECCE971E} = {F71E13E3-31DD-4439-BF3E-998550498E48}
+		{7F415B35-858D-4F22-8EF1-C7A3CEBBAB3A} = {F71E13E3-31DD-4439-BF3E-998550498E48}
+	EndGlobalSection
+EndGlobal

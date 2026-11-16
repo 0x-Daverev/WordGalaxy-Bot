@@ -1,0 +1,44 @@
+# PacketBot.Server as a system service running as a normal user:
+#   sudo systemctl enable --now packetbot@<usuario>
+# Uses that user's ~/.config/packetbot/env (secrets) and
+# ~/.local/share/WordGalaxyPacketBot (module settings, same files as Windows).
+# Logs: journalctl -u packetbot@<usuario> -f
+[Unit]
+Description=PacketBot WordGalaxy (%i)
+Wants=network-online.target
+After=network-online.target
+# Restarts are bounded: after 5 failures in 10 minutes systemd gives up.
+StartLimitIntervalSec=10min
+StartLimitBurst=5
+
+[Service]
+# READY is sent once the host has started (Microsoft.Extensions.Hosting.Systemd).
+Type=notify
+User=%i
+WorkingDirectory=/opt/packetbot
+EnvironmentFile=/home/%i/.config/packetbot/env
+Environment=DOTNET_CLI_TELEMETRY_OPTOUT=1
+ExecStart=/opt/packetbot/PacketBot.Server $PACKETBOT_ARGS
+# Exit 1 (no account could be opened) is retried; exit 2 is a configuration
+# error and needs the user.
+Restart=on-failure
+RestartSec=30
+RestartPreventExitStatus=2
+# SIGTERM stops the modules and closes TCP in order (host timeout 20 s).
+TimeoutStopSec=40
+
+# Hardening: only the settings folder is writable.
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=-/home/%i/.local/share/WordGalaxyPacketBot
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

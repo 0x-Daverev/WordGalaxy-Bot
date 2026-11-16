@@ -1,0 +1,947 @@
+{
+  "source": "https://github.com/darkbot-reloaded/DarkBot/blob/master/src/main/java/com/github/manolo8/darkbot/core/manager/StarManager.java",
+  "verified_for_wordgalaxy": false,
+  "notes": "Only standard, pirate and BL maps; experimental-zone portals excluded",
+  "maps": [
+    {
+      "id": 1,
+      "name": "1-1",
+      "portals": [
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 2
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 2,
+      "name": "1-2",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 1
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 3
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 4
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 3,
+      "name": "1-3",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 2
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 4
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 7
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 4,
+      "name": "1-4",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 2
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 3
+        },
+        {
+          "x": 19000,
+          "y": 6000,
+          "target_map": 13
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 12
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 17,
+      "name": "1-5",
+      "portals": [
+        {
+          "x": 19000,
+          "y": 6000,
+          "target_map": 16
+        },
+        {
+          "x": 10000,
+          "y": 12000,
+          "target_map": 29
+        },
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 18
+        },
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 19
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 18,
+      "name": "1-6",
+      "portals": [
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 17
+        },
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 20
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 19,
+      "name": "1-7",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 20
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 17
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 20,
+      "name": "1-8",
+      "portals": [
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 18
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 19
+        },
+        {
+          "x": 11084,
+          "y": 11084,
+          "target_map": 306
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 5,
+      "name": "2-1",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 6
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 6,
+      "name": "2-2",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 7
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 8
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 5
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 7,
+      "name": "2-3",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 3
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 8
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 6
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 8,
+      "name": "2-4",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 6
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 7
+        },
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 11
+        },
+        {
+          "x": 10000,
+          "y": 12000,
+          "target_map": 14
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 21,
+      "name": "2-5",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 16
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 29
+        },
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 22
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 23
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 22,
+      "name": "2-6",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 21
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 24
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 23,
+      "name": "2-7",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 21
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 24
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 24,
+      "name": "2-8",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 22
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 23
+        },
+        {
+          "x": 11084,
+          "y": 11084,
+          "target_map": 307
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 9,
+      "name": "3-1",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 10
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 10,
+      "name": "3-2",
+      "portals": [
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 11
+        },
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 12
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 9
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 11,
+      "name": "3-3",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 8
+        },
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 12
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 10
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 12,
+      "name": "3-4",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 4
+        },
+        {
+          "x": 10000,
+          "y": 1500,
+          "target_map": 15
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 11
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 10
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 25,
+      "name": "3-5",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 16
+        },
+        {
+          "x": 16500,
+          "y": 1500,
+          "target_map": 29
+        },
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 26
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 27
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 26,
+      "name": "3-6",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 25
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 28
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 27,
+      "name": "3-7",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 25
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 28
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 28,
+      "name": "3-8",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 27
+        },
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 26
+        },
+        {
+          "x": 11084,
+          "y": 11084,
+          "target_map": 308
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 13,
+      "name": "4-1",
+      "portals": [
+        {
+          "x": 1500,
+          "y": 6000,
+          "target_map": 4
+        },
+        {
+          "x": 18500,
+          "y": 2000,
+          "target_map": 14
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 15
+        },
+        {
+          "x": 10500,
+          "y": 6750,
+          "target_map": 16
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 14,
+      "name": "4-2",
+      "portals": [
+        {
+          "x": 10000,
+          "y": 1500,
+          "target_map": 8
+        },
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 13
+        },
+        {
+          "x": 18500,
+          "y": 11500,
+          "target_map": 15
+        },
+        {
+          "x": 10500,
+          "y": 6750,
+          "target_map": 16
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 15,
+      "name": "4-3",
+      "portals": [
+        {
+          "x": 19000,
+          "y": 6000,
+          "target_map": 12
+        },
+        {
+          "x": 2000,
+          "y": 2000,
+          "target_map": 14
+        },
+        {
+          "x": 2000,
+          "y": 11500,
+          "target_map": 13
+        },
+        {
+          "x": 10500,
+          "y": 6750,
+          "target_map": 16
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 16,
+      "name": "4-4",
+      "portals": [
+        {
+          "x": 7000,
+          "y": 13500,
+          "target_map": 17
+        },
+        {
+          "x": 28000,
+          "y": 1376,
+          "target_map": 21
+        },
+        {
+          "x": 28000,
+          "y": 25124,
+          "target_map": 25
+        },
+        {
+          "x": 19200,
+          "y": 13500,
+          "target_map": 13
+        },
+        {
+          "x": 21900,
+          "y": 11941,
+          "target_map": 14
+        },
+        {
+          "x": 21900,
+          "y": 14559,
+          "target_map": 15
+        }
+      ],
+      "scaleFactor": 2,
+      "width": 42000,
+      "height": 26200,
+      "dimensions_source": "xml_scaleFactor"
+    },
+    {
+      "id": 29,
+      "name": "4-5",
+      "portals": [
+        {
+          "x": 7000,
+          "y": 13500,
+          "target_map": 17
+        },
+        {
+          "x": 28000,
+          "y": 1376,
+          "target_map": 21
+        },
+        {
+          "x": 28000,
+          "y": 25624,
+          "target_map": 25
+        },
+        {
+          "x": 12200,
+          "y": 13300,
+          "target_map": 91
+        },
+        {
+          "x": 25000,
+          "y": 6300,
+          "target_map": 91
+        },
+        {
+          "x": 25000,
+          "y": 20700,
+          "target_map": 91
+        }
+      ],
+      "scaleFactor": 2,
+      "width": 42000,
+      "height": 26200,
+      "dimensions_source": "xml_scaleFactor"
+    },
+    {
+      "id": 91,
+      "name": "5-1",
+      "portals": [
+        {
+          "x": 5200,
+          "y": 6800,
+          "target_map": 92
+        },
+        {
+          "x": 2900,
+          "y": 13500,
+          "target_map": 92
+        },
+        {
+          "x": 5200,
+          "y": 20600,
+          "target_map": 92
+        }
+      ],
+      "scaleFactor": 2,
+      "width": 42000,
+      "height": 26200,
+      "dimensions_source": "xml_scaleFactor"
+    },
+    {
+      "id": 92,
+      "name": "5-2",
+      "portals": [
+        {
+          "x": 2800,
+          "y": 3600,
+          "target_map": 93
+        },
+        {
+          "x": 1300,
+          "y": 6750,
+          "target_map": 93
+        },
+        {
+          "x": 2800,
+          "y": 10900,
+          "target_map": 93
+        },
+        {
+          "x": 19300,
+          "y": 1400,
+          "faction_id": 1,
+          "target_map": 94
+        },
+        {
+          "x": 19300,
+          "y": 3400,
+          "faction_id": 2,
+          "target_map": 94
+        },
+        {
+          "x": 19300,
+          "y": 5400,
+          "faction_id": 3,
+          "target_map": 94
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 93,
+      "name": "5-3",
+      "portals": [
+        {
+          "x": 2000,
+          "y": 9500,
+          "faction_id": 1,
+          "target_map": 16
+        },
+        {
+          "x": 2000,
+          "y": 13500,
+          "faction_id": 2,
+          "target_map": 16
+        },
+        {
+          "x": 2000,
+          "y": 17500,
+          "faction_id": 3,
+          "target_map": 16
+        }
+      ],
+      "scaleFactor": 2,
+      "width": 42000,
+      "height": 26200,
+      "dimensions_source": "xml_scaleFactor"
+    },
+    {
+      "id": 94,
+      "name": "5-4",
+      "portals": [
+        {
+          "x": 3000,
+          "y": 2000,
+          "faction_id": 1,
+          "target_map": 92
+        },
+        {
+          "x": 3000,
+          "y": 3500,
+          "faction_id": 2,
+          "target_map": 92
+        },
+        {
+          "x": 3000,
+          "y": 5000,
+          "faction_id": 3,
+          "target_map": 92
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "client_default_missing_xml"
+    },
+    {
+      "id": 306,
+      "name": "1BL",
+      "portals": [
+        {
+          "x": 786,
+          "y": 11458,
+          "target_map": 20
+        },
+        {
+          "x": 7589,
+          "y": 1456,
+          "target_map": 307
+        },
+        {
+          "x": 20072,
+          "y": 11732,
+          "target_map": 308
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 307,
+      "name": "2BL",
+      "portals": [
+        {
+          "x": 9893,
+          "y": 862,
+          "target_map": 306
+        },
+        {
+          "x": 593,
+          "y": 5884,
+          "target_map": 24
+        },
+        {
+          "x": 20377,
+          "y": 7996,
+          "target_map": 308
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    },
+    {
+      "id": 308,
+      "name": "3BL",
+      "portals": [
+        {
+          "x": 1545,
+          "y": 12210,
+          "target_map": 306
+        },
+        {
+          "x": 19400,
+          "y": 11854,
+          "target_map": 307
+        },
+        {
+          "x": 14027,
+          "y": 3181,
+          "target_map": 28
+        }
+      ],
+      "scaleFactor": 1,
+      "width": 21000,
+      "height": 13100,
+      "dimensions_source": "xml_default"
+    }
+  ],
+  "dimension_notes": "WordGalaxy client uses width=21000*scaleFactor and height=13100*scaleFactor, default scaleFactor=1. Map ID 94 is absent from provided maps-config.xml, so default values are provisional for that map."
+}

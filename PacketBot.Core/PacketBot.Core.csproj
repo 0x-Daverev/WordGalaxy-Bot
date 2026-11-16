@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Platform-independent PacketBot engine shared by the Windows UI and the
+       headless server. Must never reference WinForms, System.Drawing or
+       Windows-only APIs. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Namespaces are FunnyProject.* / Krypton_Core.* across all projects. -->
+    <RootNamespace>FunnyProject</RootNamespace>
+    <AssemblyName>PacketBot.Core</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="PacketBot.Windows" />
+    <InternalsVisibleTo Include="PacketBot.Core.Tests" />
+    <InternalsVisibleTo Include="PacketBot.Server" />
+    <InternalsVisibleTo Include="PacketBot.Server.Tests" />
+    <!-- tools/screenshot: README picture with a demo game state. -->
+    <InternalsVisibleTo Include="PacketBot.Screenshot" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- MapGraph loads Navigation/maps.json from AppContext.BaseDirectory;
+         content flows to the output of every referencing executable. -->
+    <Content Include="Navigation\maps.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

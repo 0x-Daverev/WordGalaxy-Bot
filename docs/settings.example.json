@@ -1,0 +1,35 @@
+{
+  "SelectedModule": "Collect",
+
+  "CollectMapId": 1,
+  "CollectTypesByMap": {
+    "1": [ "BONUS_BOX" ]
+  },
+
+  "NpcKillerMapId": 1,
+  "NpcKillerTargetsByMap": {
+    "1": [ "-=[ Streuner ]=-" ]
+  },
+  "NpcKillerLaser": "ucb-100",
+  "NpcKillerZonesByMap": {
+    "1": [ { "X": 2000, "Y": 2000, "Width": 6000, "Height": 4000 } ]
+  },
+  "NpcKillerEnergyLeech": false,
+  "EnergyLeechAttemptUtc": null,
+
+  "GalaxyGateName": "Beta",
+  "Spins": 100,
+  "Laser": "ucb-100",
+  "AttackMode": "both",
+  "GgFinalNpcFormation": "",
+
+  "RunFormation": "",
+  "AttackFormation": "",
+
+  "AutoBuyBoosters": {},
+  "BoosterPurchaseAttemptUtc": {},
+
+  "AutoReconnect": false,
+  "AutoAcceptInvites": true,
+  "AllowedInviterId": null
+}

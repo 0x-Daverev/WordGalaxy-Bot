@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Unit tests that run on Linux and Windows without WinForms, a real game
+       server or Telegram. Live-server checks belong to a separate suite. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+
+  <!-- maps.json reaches the test output through PacketBot.Core's content items. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\PacketBot.Core\PacketBot.Core.csproj" />
+  </ItemGroup>
+
+  <!-- The documented example must stay loadable by the bot. -->
+  <ItemGroup>
+    <None Include="..\..\docs\settings.example.json" Link="settings.example.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
